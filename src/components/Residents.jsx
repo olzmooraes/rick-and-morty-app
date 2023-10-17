@@ -7,18 +7,17 @@ function Residents(props) {
     const [residents, setResident] = useState([])
     const arrayResidents = props.residents
     try {
-        console.log(props.residents)
-        arrayResidents.array.forEach(async (element) => {
-            await axios.get(element).then((response) => {
+        arrayResidents.map((element) => {
+            axios.get(element).then((response) => {
                 const newResidents = [...residents, response.data]
                 setResident(newResidents)
             }
             ).catch(error => console.log(error.message))
+            
         });
     } catch (error) {
         console.log(error.message)
     }
-
     return (
         <>
             <h3>Residentes</h3>

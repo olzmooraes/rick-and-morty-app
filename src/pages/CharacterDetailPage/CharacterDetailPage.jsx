@@ -22,7 +22,7 @@ function CharacterDetailPage(props) {
             <p>Tipo: {detailPage.type}</p>
             <p>Dimensão: {detailPage.dimension}</p>
             <p>criado em: {detailPage.created}</p>
-            <Residents elements={detailPage.residents}/>
+            <Residents residents={detailPage.residents}/>
         </>
     )
 }
