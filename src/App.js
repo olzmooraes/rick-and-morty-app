@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import CharacterDetailPage from "./pages/CharacterDetailPage/CharacterDetailPage";
+import CharacterListPage from "./pages/CharacterListPage/CharacterListPage"
+import styled from "styled-components";
+import { useState } from "react";
 
 function App() {
+  const [currentPage, setPage] = useState("")
+
+  const selectPage = ()=>{
+    switch(currentPage){
+      case "list":
+        return <CharacterListPage/>
+      case "Detail":
+        return <CharacterDetailPage/>
+      default:
+        return <CharacterListPage/>
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>
+        RICK AND MORTY
+      </h1>
+        {selectPage()}
     </div>
   );
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
