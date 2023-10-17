@@ -1,10 +1,17 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import styled from "styled-components";
+import Styled from "styled-components";
 
-
-function CharacterListPage() {
+const ObjectList = Styled.li`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid black;
+    padding-left: 20px;
+    padding-bottom: 20px;
+`
+function CharacterListPage(props) {
     const [characterList, setCharacterList] = useState([])
 
     const getCharacterList = async () => {
@@ -23,11 +30,11 @@ function CharacterListPage() {
                 {
                     characterList.map(list => {
                         return (
-                            <li key={list.id}>
+                            <ObjectList key={list.id}>
                                 <p>Nome : {list.name}</p>
                                 <p>Tipo : {list.type}</p>
-                                <p>Dimensão : {list.dimension}</p>
-                            </li>
+                                <button onClick={()=>{props.event(list.url,"Detail")}}>Clique aqui para ver detalhes</button>
+                            </ObjectList>
                         )
                     })
                 }

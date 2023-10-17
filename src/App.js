@@ -5,15 +5,19 @@ import { useState } from "react";
 
 function App() {
   const [currentPage, setPage] = useState("")
-
+  const [urlList, setUrl] = useState("")
+  const searchUrlLink = (url, newCurrentPage)=>{
+      setUrl(url);
+      setPage(newCurrentPage)
+  }
   const selectPage = ()=>{
     switch(currentPage){
       case "list":
-        return <CharacterListPage/>
+        return <CharacterListPage event={searchUrlLink}/>
       case "Detail":
-        return <CharacterDetailPage/>
+        return <CharacterDetailPage url={urlList} event={searchUrlLink}/>
       default:
-        return <CharacterListPage/>
+        return <CharacterListPage event={searchUrlLink}/>
     }
   }
 
