@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Styled from "styled-components";
 import ListFormated from "../../components/ListFormated";
+
 const ObjectList = Styled.li`
+    12efont-family: monospace;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: 1px solid black;
+    border: 1px solid #0c4b49;
     padding-left: 20px;
     padding-bottom: 20px;
     border-radius: 5px;
@@ -17,7 +19,7 @@ const ObjectList = Styled.li`
     width: 250px;
     transition: all 0.3s ease-out;
     &:hover{
-        background-color: #d3d3d3;
+        opacity: 50%;
         transform: translateY(-1px);
         cursor: pointer;
     }
@@ -27,8 +29,13 @@ const ListLocation = Styled.ul`
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    
 `
+const Title = Styled.span`
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #0c4b49;
+  font-weight: bold
+`;
 function CharacterListPage(props) {
     const [characterList, setCharacterList] = useState([])
 
@@ -41,21 +48,22 @@ function CharacterListPage(props) {
     useEffect(() => {
         getCharacterList()
     }, [])  
-
+    
     const alteredList = ()=>{
         switch(props.inputSearch){
             case "":
                 return characterList.map((list) => {
                     return (
                         <ObjectList key={list.id} onClick={() => { props.event(list.url, "Detail") }}>
-                            <p>Nome : {list.name}</p>
-                            <p>Tipo : {list.type}</p>
+                            <Title>Nome: {list.name} </Title>
+                            <Title>Tipo: {list.type}</Title>
+                            <Title>Dimensão: {list.dimension}</Title>
                             <p>Clique aqui para ver detalhes</p>
                         </ObjectList>
                     );
                 })
             default:
-                return <ListFormated listDefault={characterList} inputSearch={props.inputSearch}/>
+                return <ListFormated listDefault={characterList} event={props.event} inputSearch={props.inputSearch}/>
         }
     }
     return (
