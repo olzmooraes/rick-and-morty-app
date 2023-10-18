@@ -4,7 +4,6 @@ import axios from "axios";
 import Styled from "styled-components";
 import ListFormated from "../../components/ListFormated";
 const ObjectList = Styled.li`
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -30,16 +29,9 @@ const ListLocation = Styled.ul`
     align-items: center;
     
 `
-// const Titulo = Styled.span`
-// @font-face {
-//     font-family: 'rick-and-morty';
-//     src: url(../fonts/get_schwifty.ttf);
-// }
-// font-family: 'rick-and-morty';
-// `
 function CharacterListPage(props) {
     const [characterList, setCharacterList] = useState([])
-    
+
     const getCharacterList = async () => {
         await axios.get("https://rickandmortyapi.com/api/location/").then((response) => {
             setCharacterList(response.data.results)   

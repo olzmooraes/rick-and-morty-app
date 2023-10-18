@@ -17,16 +17,15 @@ const Resident = Styled.div`
         transform: translateY(-1px);
         cursor: pointer;
     }
-
 `
 const Img = Styled.img`
     width: 100%;
-    
 `
 
 function Residents(props) {
     const [residents, setResident] = useState([])
     const arrayResidents = props.residents
+    const [details, setDetails] = useState(false)
     const getResident = () => {
         axios.get(arrayResidents).then((response) => {
             setResident(response.data)
@@ -35,12 +34,28 @@ function Residents(props) {
     useEffect(() => {
         getResident()
     }, [])
-
+    const detailResidents = () => {
+        switch (details) {
+            case true: return (
+                <div onClick={() => { props.event(residents.url, "1") }} onMouseOver={()=>{setDetails(true)}} onMouseOut={()=>{setDetails(false)}} style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center"}}>
+                    <p>Nome: {residents.name}</p>
+                    <p>Status: {residents.status}</p>
+                    <p>Espécie: {residents.species}</p>
+                    <p>gênero: {residents.gender}</p>
+                </div>
+            )
+            default: return (
+                <div onClick={() => { props.event(residents.url) }} onMouseOver={()=>{setDetails(true)}} onMouseOut={()=>{setDetails(false)}} style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center" }}>
+                    <Img src={residents.image} alt={residents.name} />
+                </div>
+            )
+        }
+    }
     return (
         <Resident key={residents.id}>
-            <div onClick={()=>{props.event(residents.url, "1")}} style={{display:"flex", justifyContent:"center", flexDirection:"column", alignItems:"center"}}>
-                <Img src={residents.image} alt={residents.name}/>
-            </div>
+            {
+                detailResidents()
+            }
         </Resident>
     )
 }
