@@ -17,6 +17,7 @@ const TotaletailLocation = Styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 0
 `
 const DateCreation = Styled.p`
     margin-top: 0;

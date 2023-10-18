@@ -5,8 +5,17 @@ import { useEffect, useState } from "react";
 
 const Logo = Styled.img`
   width: 25vw;
-  margin: 20px;
+  &:hover{
+    scale: 1.02;
+    cursor: pointer;
+  }
 `
+const GlobalStyle = Styled.div`
+  padding: 0px;
+  margin: 0px;
+  width: 100vw;
+`
+
 const Header = Styled.div`
   display: flex;
   justify-content: space-between;
@@ -50,13 +59,13 @@ function App() {
     setPage("list")
   }
   return (
-    <>
+    <GlobalStyle>
       <Header>
         <Logo src="logo.png" alt="Logo" onClick={() => { clearInputSetPage() }} />
         <Input type="text" className="inputSearch" placeholder="Pesquisar" onChange={(e) => { setInput(e.target.value) }}></Input>
       </Header>
       {selectPage()}
-    </>
+    </GlobalStyle>
   );
 }
 

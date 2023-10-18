@@ -63,7 +63,7 @@ function CharacterListPage(props) {
                     );
                 })
             default:
-                return <ListFormated listDefault={characterList} event={props.event} inputSearch={props.inputSearch}/>
+                return <ListFormated key={list.id} listDefault={characterList} event={props.event} inputSearch={props.inputSearch}/>
         }
     }
     return (
