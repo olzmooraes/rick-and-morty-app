@@ -13,10 +13,20 @@ const ListResident = Styled.div`
 `
 const TotaletailLocation = Styled.div`
     width: 100vw;
-`
-const StyledCharacterDetailPage = Styled.div`
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 `
+const DateCreation = Styled.p`
+    margin-top: 0;
+    color: #d2d2d2
+    font-family: monospace;
+`
+const DefinitionLocation = Styled.h2`
+    font-family: monospace;
+`
+
 function CharacterDetailPage(props) {
     const [detailPage, setDetailPage] = useState({})
     const [totalResidents, setTotalResidents] = useState([])
@@ -45,13 +55,10 @@ function CharacterDetailPage(props) {
     }, [urlResident])
     
     return (
-        <StyledCharacterDetailPage>
             <TotaletailLocation>
-                <p>Nome: {detailPage.name}</p>
-                <p>Tipo: {detailPage.type}</p>
-                <p>Dimensão: {detailPage.dimension}</p>
-                <p>criado em: {detailPage.created}</p>
-                <h3>Residents</h3>
+                <DefinitionLocation>{detailPage.type} {detailPage.name} {detailPage.dimension} </DefinitionLocation>
+                <DateCreation>criado em: {detailPage.created}</DateCreation>
+                <h3 style={{fontFamily: "monospace"}}>Residents</h3>
                 <ListResident>
                     {
                         totalResidents.map(element => {
@@ -59,8 +66,7 @@ function CharacterDetailPage(props) {
                         })
                     }
                 </ListResident>
-            </TotaletailLocation>
-        </StyledCharacterDetailPage>
+            </TotaletailLocation>   
     )
 }
 

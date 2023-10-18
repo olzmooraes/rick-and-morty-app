@@ -4,7 +4,7 @@ import Styled from "styled-components";
 
 
 const ObjectList = Styled.li`
-
+    font-family: monospace;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,6 +22,13 @@ const ObjectList = Styled.li`
         cursor: pointer;
     }
 `
+const Title = Styled.span`
+    font-family: monospace;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #0c4b49;
+    font-weight: bold
+`;
 
 function ListFormated(props) {
     const listDefault = props.listDefault
@@ -41,8 +48,9 @@ function ListFormated(props) {
                 newList.map((list) => {
                     return (
                         <ObjectList key={list.id} onClick={() => { props.event(list.url, "Detail") }}>
-                            <p>Nome :{list.name}</p>
-                            <p>Tipo : {list.type}</p>
+                            <Title>Nome: {list.name}</Title>
+                            <Title>Tipo: {list.type}</Title>
+                            <Title>Dimensão: {list.dimension}</Title>
                             <p>Clique aqui para ver detalhes</p>
                         </ObjectList>
                     );

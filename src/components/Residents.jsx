@@ -37,7 +37,7 @@ function Residents(props) {
     const detailResidents = () => {
         switch (details) {
             case true: return (
-                <div onClick={() => { props.event(residents.url, "1") }} onMouseOver={()=>{setDetails(true)}} onMouseOut={()=>{setDetails(false)}} style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center"}}>
+                <div onClick={() => { props.event(residents.url, "1") }} onMouseOver={()=>{setDetails(true)}} onMouseOut={()=>{setDetails(false)}} style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", fontFamily: "monospace"}}>
                     <p>Nome: {residents.name}</p>
                     <p>Status: {residents.status}</p>
                     <p>Espécie: {residents.species}</p>
