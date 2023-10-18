@@ -15,9 +15,10 @@ const ObjectList = Styled.li`
     box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
     padding: 30px;
     margin: 20px;
-    width: 200px;
+    width: 250px;
     transition: all 0.3s ease-out;
-    button:hover{
+    &:hover{
+        background-color: #d3d3d3;
         transform: translateY(-1px);
         cursor: pointer;
     }
@@ -27,17 +28,18 @@ const ListLocation = Styled.ul`
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    
 `
-const Titulo = Styled.span`
-@font-face {
-    font-family: 'rick-and-morty';
-    src: url(../fonts/get_schwifty.ttf);
-}
-font-family: 'rick-and-morty';
-`
+// const Titulo = Styled.span`
+// @font-face {
+//     font-family: 'rick-and-morty';
+//     src: url(../fonts/get_schwifty.ttf);
+// }
+// font-family: 'rick-and-morty';
+// `
 function CharacterListPage(props) {
     const [characterList, setCharacterList] = useState([])
-
+    
     const getCharacterList = async () => {
         await axios.get("https://rickandmortyapi.com/api/location/").then((response) => {
             setCharacterList(response.data.results)   
