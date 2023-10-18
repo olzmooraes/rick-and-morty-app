@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Styled from "styled-components";
+import ListFormated from "../../components/ListFormated";
 const ObjectList = Styled.li`
 
     display: flex;
@@ -39,30 +40,36 @@ function CharacterListPage(props) {
 
     const getCharacterList = async () => {
         await axios.get("https://rickandmortyapi.com/api/location/").then((response) => {
-            setCharacterList(response.data.results)
-            console.log(characterList)
+            setCharacterList(response.data.results)   
         }
         ).catch(error => console.log(error.message))
     }
     useEffect(() => {
         getCharacterList()
-    }, [])
+    }, [])  
+
+    const alteredList = ()=>{
+        switch(props.inputSearch){
+            case "":
+                return characterList.map((list) => {
+                    return (
+                        <ObjectList key={list.id} onClick={() => { props.event(list.url, "Detail") }}>
+                            <p>Nome : {list.name}</p>
+                            <p>Tipo : {list.type}</p>
+                            <p>Clique aqui para ver detalhes</p>
+                        </ObjectList>
+                    );
+                })
+            default:
+                return <ListFormated listDefault={characterList} inputSearch={props.inputSearch}/>
+        }
+    }
     return (
-        <>
-            <ListLocation>
-                {
-                    characterList.map(list => {
-                            return (
-                                <ObjectList key={list.id} onClick={() => { props.event(list.url, "Detail") }}>
-                                    <p><Titulo>Nome : </Titulo>{list.name}</p>
-                                    <p>Tipo : {list.type}</p>
-                                    <p>Clique aqui para ver detalhes</p>
-                                </ObjectList>
-                            )
-                    })
-                }
-            </ListLocation>
-        </>
+        <ListLocation>
+            {   
+                alteredList()
+            }
+        </ListLocation>
     )
 }
 

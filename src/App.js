@@ -29,11 +29,11 @@ function App() {
     const selectPage = () => {
       switch (currentPage) {
         case "list":
-          return <CharacterListPage event={searchUrlLink} />
+          return <CharacterListPage event={searchUrlLink}  inputSearch={inputSearch}/>
         case "Detail":
           return <CharacterDetailPage url={urlList} event={searchUrlLink} />
         default:
-          return <CharacterListPage event={searchUrlLink} />
+          return <CharacterListPage event={searchUrlLink} inputSearch={inputSearch} />
       }
 
     }

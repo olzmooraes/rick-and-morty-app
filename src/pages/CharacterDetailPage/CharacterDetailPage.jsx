@@ -17,7 +17,6 @@ function CharacterDetailPage(props) {
     const [totalResidents, setTotalResidents] = useState([])
     const getCharacterDetailPage = async () => {
         await axios.get(props.url).then((response) => {
-            console.log(response.data)
             setDetailPage(response.data)
             setTotalResidents(response.data.residents)
         }
