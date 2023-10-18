@@ -15,7 +15,7 @@ const ObjectList = Styled.li`
     box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
     padding: 30px;
     margin: 20px;
-    width: 200px;
+    width: 250px;
     transition: all 0.3s ease-out;
     button:hover{
         transform: translateY(-1px);
@@ -28,7 +28,7 @@ function ListFormated(props) {
     const [newList, setNewList] = useState([])
 
     const list = () => {
-        const listFiltred = listDefault.filter(element => element.name.includes(props.inputSearch))
+        const listFiltred = listDefault.filter(element => element.name.toLowerCase().includes(props.inputSearch.toLowerCase()) || element.type.toLowerCase().includes(props.inputSearch.toLowerCase()) )
         setNewList(listFiltred)
     }
     useEffect(() => {

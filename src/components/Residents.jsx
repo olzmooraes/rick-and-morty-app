@@ -8,19 +8,22 @@ const Resident = Styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center; 
-    border: 1px solid black;
     border-radius: 5px;
     box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
-    padding: 30px;
     margin: 20px;
     width: 200px;
     transition: all 0.3s ease-out;
+    &:hover{
+        transform: translateY(-1px);
+        cursor: pointer;
+    }
 
 `
 const Img = Styled.img`
-    width: 150px;
-    padding: 10px
+    width: 100%;
+    
 `
+
 function Residents(props) {
     const [residents, setResident] = useState([])
     const arrayResidents = props.residents
@@ -34,12 +37,10 @@ function Residents(props) {
     }, [])
 
     return (
-
         <Resident key={residents.id}>
-            <p>Nome: {residents.name}</p>
-            <p>Status: {residents.status}</p>
-            <p>Espécie: {residents.species}</p>
-            <Img src={residents.image} alt={residents.name} />
+            <div onClick={()=>{props.event(residents.url, "1")}} style={{display:"flex", justifyContent:"center", flexDirection:"column", alignItems:"center"}}>
+                <Img src={residents.image} alt={residents.name}/>
+            </div>
         </Resident>
     )
 }

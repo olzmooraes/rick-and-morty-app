@@ -11,6 +11,7 @@ const Header = Styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center; 
+  width: 66vw;
 `
 const Input = Styled.input`
   width: 30vw;
