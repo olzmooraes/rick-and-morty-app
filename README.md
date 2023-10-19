@@ -26,3 +26,10 @@ O projeto estará disponível em http://localhost:3000 por padrão.
 
 ## Contribuições
 Contribuições são bem-vindas! Se você encontrar bugs ou tiver sugestões para melhorias, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+
+
+Link do Surge:
+[https://appfrontrickandmortyluiz.surge.sh/)
+
+Link do github: 
+[https://github.com/olzmooraes/rick-and-morty-app)
