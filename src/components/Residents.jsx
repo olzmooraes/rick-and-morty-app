@@ -50,7 +50,7 @@ function Residents(props) {
             )
             default: return (
                 <StyleResident
-                    key={residents.id}
+                    key={`${residents.id}${residents.name}`}
                     onClick={() => { props.event(residents.url) }}
                     onMouseOver={() => { setDetails(true) }}
                     onMouseOut={() => { setDetails(false) }}>
