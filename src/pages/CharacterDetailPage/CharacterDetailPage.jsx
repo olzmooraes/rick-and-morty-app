@@ -19,6 +19,9 @@ const TotaletailLocation = Styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    h3{
+        font-family: monospace;
+    }
 `
 const DateCreation = Styled.p`
     margin-top: 0;
@@ -57,18 +60,17 @@ function CharacterDetailPage(props) {
         setUrlResident(url)
     }
     const loading = ()=>{
-        console.log(loandingEnable)
         switch(loandingEnable){
             case true: return <Loanding>Carregando</Loanding>
             default: return(
                 <TotaletailLocation>
                     <DefinitionLocation>{detailPage.type} {detailPage.name} {detailPage.dimension} </DefinitionLocation>
                     <DateCreation>criado em: {detailPage.created}</DateCreation>
-                    <h3 style={{ fontFamily: "monospace" }}>Residents</h3>
+                    <h3>Residents</h3>
                     <ListResident>
                         {
                             totalResidents.map(element => {
-                                return <Residents residents={element} event={getUrlResident} />
+                                return <Residents key={element} residents={element} event={getUrlResident} />
                             })
                         }
                     </ListResident>
