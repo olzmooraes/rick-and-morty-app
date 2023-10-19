@@ -1,4 +1,4 @@
-# Rick and Morty Location API Project
+# Rick and Morty Location App
 
 Este é um projeto React que utiliza a API de localizações de Rick and Morty para exibir informações sobre diferentes lugares no universo da série. Além disso, o projeto também permite visualizar detalhes dos residentes de cada localização quando o mouse é passado sobre suas imagens.
 
