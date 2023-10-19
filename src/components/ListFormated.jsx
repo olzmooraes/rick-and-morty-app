@@ -24,7 +24,7 @@ const ObjectList = Styled.li`
 `
 const Title = Styled.span`
     font-family: monospace;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: 10px;
     color: #0c4b49;
     font-weight: bold

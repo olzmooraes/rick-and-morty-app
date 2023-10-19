@@ -9,16 +9,15 @@ const Img = Styled.img`
 `
 const StyleResident = Styled.div`
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     font-family: monospace;
     width: 10vw;
     box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
     transition: all 0.3s ease-out;
     border-radius: 10px;
-    margin: 1rem;
-    font-size: 90%;
+    font-size: 0.7vw;
     &:hover{
         cursor: pointer;
     }
@@ -38,11 +37,11 @@ function Residents(props) {
     const detailResidents = () => {
         switch (details) {
             case true: return (
-                <StyleResident 
-                key={residents.id} 
-                onClick={() => { props.event(residents.url) }} 
-                onMouseOver={() => { setDetails(true) }} 
-                onMouseOut={() => { setDetails(false) }} >
+                <StyleResident
+                    key={residents.id}
+                    onClick={() => { props.event(residents.url) }}
+                    onMouseOver={() => { setDetails(true) }}
+                    onMouseOut={() => { setDetails(false) }} >
                     <p>Nome: {residents.name}</p>
                     <p>Status: {residents.status}</p>
                     <p>Espécie: {residents.species}</p>
@@ -50,11 +49,11 @@ function Residents(props) {
                 </StyleResident>
             )
             default: return (
-                <StyleResident 
-                key={residents.id} 
-                onClick={() => { props.event(residents.url) }} 
-                onMouseOver={() => { setDetails(true) }} 
-                onMouseOut={() => { setDetails(false) }}>
+                <StyleResident
+                    key={residents.id}
+                    onClick={() => { props.event(residents.url) }}
+                    onMouseOver={() => { setDetails(true) }}
+                    onMouseOut={() => { setDetails(false) }}>
                     <Img src={residents.image} alt={residents.name} />
                 </StyleResident>
             )

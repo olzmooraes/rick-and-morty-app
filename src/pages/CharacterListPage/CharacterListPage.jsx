@@ -5,7 +5,7 @@ import Styled from "styled-components";
 import ListFormated from "../../components/ListFormated";
 
 const ObjectList = Styled.li`
-    12efont-family: monospace;
+    font-family: monospace;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,44 +31,54 @@ const ListLocation = Styled.ul`
     align-items: center;
 `
 const Title = Styled.span`
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-bottom: 10px;
   color: #0c4b49;
   font-weight: bold
-`;
+`
+const Loanding = Styled.h1`
+    color: rgba(178,223,40,255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    margin-top: 30px;
+    font-size: 5rem;
+`
 function CharacterListPage(props) {
     const [characterList, setCharacterList] = useState([])
-
+    const [loadingEnable, setLoading] = useState(true)
     const getCharacterList = async () => {
         await axios.get("https://rickandmortyapi.com/api/location/").then((response) => {
-            setCharacterList(response.data.results)   
+            setCharacterList(response.data.results)
+            setLoading(false)
         }
         ).catch(error => console.log(error.message))
     }
     useEffect(() => {
         getCharacterList()
-    }, [])  
-    
-    const alteredList = ()=>{
-        switch(props.inputSearch){
-            case "":
-                return characterList.map((list) => {
-                    return (
-                        <ObjectList key={list.id} onClick={() => { props.event(list.url, "Detail") }}>
-                            <Title>Nome: {list.name} </Title>
-                            <Title>Tipo: {list.type}</Title>
-                            <Title>Dimensão: {list.dimension}</Title>
-                            <p>Clique aqui para ver detalhes</p>
-                        </ObjectList>
-                    );
-                })
-            default:
-                return <ListFormated key={list.id} listDefault={characterList} event={props.event} inputSearch={props.inputSearch}/>
+    }, [])
+    const alteredList = () => {
+        if (loadingEnable === true) { return <Loanding>Carregando</Loanding> } else {
+            switch (props.inputSearch) {
+                case "":
+                    return characterList.map((list) => {
+                        return (
+                            <ObjectList key={list.id} onClick={() => { props.event(list.url, "Detail") }}>
+                                <Title>Nome: {list.name} </Title>
+                                <Title>Tipo: {list.type}</Title>
+                                <Title>Dimensão: {list.dimension}</Title>
+                                <p>Clique aqui para ver detalhes</p>
+                            </ObjectList>
+                        );
+                    })
+                default: return <ListFormated listDefault={characterList} event={props.event} inputSearch={props.inputSearch} />
+            }
         }
     }
     return (
         <ListLocation>
-            {   
+            {
                 alteredList()
             }
         </ListLocation>
